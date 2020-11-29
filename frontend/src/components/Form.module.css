@@ -1,0 +1,27 @@
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  margin: 32px auto;
+
+  padding: 16px;
+
+  width: 500px;
+}
+
+.titleLogo {
+  font-size: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo {
+  height: 200px;
+}
+
+.btnContainer {
+  display: flex;
+  padding: 16px;
+  justify-content: center;
+}

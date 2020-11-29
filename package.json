@@ -1,0 +1,12 @@
+{
+  "name": "open-planning-poker",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "cd frontend; npm run serve; cd ../server; npm run serve;"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

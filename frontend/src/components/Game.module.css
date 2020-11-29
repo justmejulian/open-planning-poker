@@ -1,0 +1,98 @@
+.gameContainer {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+
+  padding: 24px;
+
+  box-sizing: border-box;
+
+  width: 100%;
+  max-width: 1000px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.headerLogo {
+  font-size: 27px;
+  display: flex;
+  align-items: center;
+
+  cursor: pointer;
+}
+
+.logo {
+  height: 50px;
+}
+
+.cardsContainer {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  flex-wrap: wrap;
+
+  box-sizing: border-box;
+
+  width: 100%;
+  max-width: 500px;
+  height: 300px;
+  margin: auto;
+}
+
+.cardContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  margin-right: 12px;
+
+  width: 80px;
+}
+
+.playerName {
+  margin-top: 8px;
+}
+
+.playerMe {
+  border-bottom: 1px solid blue;
+}
+
+.selectionContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  margin-top: 32px;
+}
+
+.subtitle {
+  margin-top: 32px;
+}
+
+.btnContainer {
+  display: flex;
+  padding: 16px;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+.btnsDisabled {
+  pointer-events: none;
+  opacity: 0.3;
+}
+
+.card {
+  width: 50px;
+  padding: 4px;
+
+  cursor: pointer;
+}
+
+.selectedCard {
+  width: 60px;
+  padding: 4px;
+}

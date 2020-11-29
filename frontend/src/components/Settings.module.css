@@ -1,0 +1,15 @@
+.modal {
+  width: 200px;
+  height: 200px;
+  margin: 100px auto;
+
+  border-radius: 4px;
+
+  padding: 4px 24px;
+
+  background-color: white;
+}
+
+.btnContainer {
+  margin-top: 8px;
+}
