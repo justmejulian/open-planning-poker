@@ -2,7 +2,7 @@
 
 Online Planning poker that uses the [Planning Poker cards by Redbooth](https://github.com/redbooth/scrum-poker-cards).
 
-Hosted on heroku. -> https://open-planning-poker.herokuapp.com/
+Hosted on [heroku](heroku.com). -> https://open-planning-poker.herokuapp.com/
 
 ## Building and running on localhost
 
