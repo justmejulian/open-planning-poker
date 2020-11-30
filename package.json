@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "cd frontend; npm run serve; cd ../server; npm run serve;"
+    "build": "cd frontend; npm run serve; cd ../server; npm run serve;",
+    "start": "cd../server; npm run start;"
   },
   "keywords": [],
   "author": "",

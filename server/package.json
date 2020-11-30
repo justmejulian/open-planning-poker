@@ -6,8 +6,8 @@
   "scripts": {
     "start": "babel-node app.js",
     "dev": "nodemon --exec babel-node app.js",
-    "clean": "rm  -r node_modules;",
-    "serve": "npm install --also=dev; npm run start;"
+    "clean": "rm  -r node_modules",
+    "serve": "npm install --also=dev"
   },
   "keywords": [],
   "author": "",
