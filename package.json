@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "cd frontend; npm run serve; cd ../server; npm run serve;",
-    "start": "cd../server; npm run start;"
+    "start": "cd server; npm run start;"
   },
   "keywords": [],
   "author": "",
