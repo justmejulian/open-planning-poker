@@ -20,10 +20,10 @@ const { setShowValue, getShowValue } = require("./showValue");
 const port = process.env.PORT || 3000;
 const app = express();
 
-app.use(express.static(path.join(__dirname, "/../frontend/dist")));
+app.use(express.static(path.join(__dirname, "/../../frontend/dist")));
 
 app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname + "/../frontend/dist/index.html"));
+  res.sendFile(path.join(__dirname + "/../../frontend/dist/index.html"));
 });
 
 const server = http.createServer(app);
