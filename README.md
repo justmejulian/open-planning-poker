@@ -4,6 +4,7 @@ Online Planning poker that uses the [Planning Poker cards by Redbooth](https://g
 
 Hosted on [heroku](heroku.com). -> https://open-planning-poker.herokuapp.com/
 
+![login](./img/login.png)
 ![seleted cards](./img/seleted_cards.png)
 ![show cards](./img/show_cards.png)
 
