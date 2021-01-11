@@ -11,7 +11,8 @@
     "serve": "npm install --also=dev; npm run build-prod;",
     "build-dev": "webpack --mode development",
     "build-prod": "webpack --mode production",
-    "start": "webpack serve --hot --mode development"
+    "start": "webpack --watch --mode development",
+    "dev": "webpack serve --hot --mode development"
   },
   "dependencies": {
     "@material-ui/core": "^4.11.0",

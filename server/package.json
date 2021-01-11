@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node ./dist/app.js",
-    "dev": "nodemon --exec babel-node ./src/app.js",
+    "dev": "nodemon  --exec babel-node ./src/app.js --watch ../frontend/dist",
     "clean": "rm  -rf node_modules && rm -rf dist",
     "build-server": "babel -d ./dist ./src -s",
     "serve": "npm run clean && mkdir dist && npm install --also=dev && npm run build-server"
