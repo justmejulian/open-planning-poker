@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
 import classnames from 'classnames';
+import Confetti from 'react-confetti';
 
 import { Typography, Button } from '@material-ui/core';
 
@@ -86,6 +87,16 @@ const Game = () => {
   const getSomeoneHasCard = () => players?.find((player) => !!player.card);
   const getMe = () => players?.find((player) => player.userId === userId);
 
+  const getConfetti = () => {
+      if (showValue && players.length > 1) {
+      const allCardsMatch = players.every(player => player.card === players[0].card );
+      if (allCardsMatch) {
+        return (<Confetti recycle={false} numberOfPieces={800} />);
+      }
+    }
+    return null;
+  }
+
   return (
     <div className={styles.gameContainer}>
       <div className={styles.header}>
@@ -99,6 +110,7 @@ const Game = () => {
       </div>
 
       <div className={styles.cardsContainer}>
+        {getConfetti()}
         {players.map((player) => getPlayer(player))}
       </div>
 
