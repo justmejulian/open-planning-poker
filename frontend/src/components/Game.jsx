@@ -24,13 +24,6 @@ import Settings from "./Settings";
 
 import styles from "./Game.module.css";
 
-const getCards = (players) => {
-  if (!players) {
-    return null;
-  }
-  return players.filter(({ card }) => !!card).map(({ card }) => card);
-};
-
 const getCardValues = (players) => {
   if (!players) {
     return null;
@@ -131,7 +124,7 @@ const Game = () => {
       </div>
 
       <div className={styles.cardsContainer}>
-        {showValue && <Confetti cards={getCards(players)} />}
+        {showValue && <Confetti players={players} />}
         {players.map((player) => getPlayer(player))}
       </div>
 
