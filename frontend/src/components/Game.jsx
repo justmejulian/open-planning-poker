@@ -23,6 +23,29 @@ import Settings from './Settings';
 
 import styles from './Game.module.css';
 
+const getCardValues = (players) => {
+  if (!players) {
+    return null
+  }
+
+  const numOr0 = n => isNaN(n) || !n ? Infinity : n;
+
+  // return list of all defined cards
+  return players.filter(({card}) => !!card).map(({card}) => numOr0(card));
+};
+
+const getAverage = (players) => {
+  if (!players) {
+    return null
+  }
+  
+  const allCards = getCardValues(players);
+
+  const sum = allCards.reduce((a, b) => a + b, 0) ;
+
+  return sum ? sum / allCards.length : 0;
+}
+
 const Game = () => {
   const { gameId } = useParams();
   const history = useHistory();
@@ -123,6 +146,12 @@ const Game = () => {
         >
           {showValue ? 'Reset' : 'Show'} cards
         </Button>
+
+        <div className={styles.subtitle}>
+          <Typography variant="subtitle2">
+            {'Average: '}
+            {showValue && (getAverage(players))}</Typography>
+        </div>
 
         <div className={styles.subtitle}>
           <Typography variant="subtitle1">Select your Card</Typography>
