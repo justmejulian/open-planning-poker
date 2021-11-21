@@ -23,6 +23,7 @@ import Confetti from './Confetti';
 import Average from './Average';
 
 import styles from './Game.module.css';
+import { HeaderLogo } from './HeaderLogo';
 
 const getCards = (players) => {
   if (!players) {
@@ -117,71 +118,62 @@ const Game = () => {
     players?.find((player) => player.userId === userId);
 
   return (
-    <div className={styles.gameContainer}>
-      <div className={styles.header}>
-        <div
-          className={styles.headerLogo}
-          onClick={() => history.push('/')}
-        >
-          <img
-            className={styles.logo}
-            src={openHack}
-            alt="Open Hack Logo"
-          />
-          <div>📅</div>
-          <div>🃏</div>
-        </div>
-        <Typography variant="h5">{gameId}</Typography>
-        <Settings setName={setName} name={name} />
-      </div>
-
-      <div className={styles.cardsContainer}>
-        {showValue && <Confetti cards={getCards(players)} />}
-        {players.map((player) => getPlayer(player))}
-      </div>
-
-      <div className={styles.selectionContainer}>
-        <Button
-          variant="contained"
-          color="primary"
-          onClick={handleShowValue}
-          disabled={!getSomeoneHasCard() && !showValue}
-        >
-          {showValue ? 'Reset' : 'Show'} cards
-        </Button>
-
-        <div className={styles.subtitle}>
-          <Average
-            cardValues={getCardValues(players)}
-            showValue={showValue}
-          />
+    <>
+      {showValue && <Confetti cards={getCards(players)} />}
+      <div className={styles.gameContainer}>
+        <div className={styles.header}>
+          <HeaderLogo openHack={openHack} />
+          <Typography variant="h5">{gameId}</Typography>
+          <Settings setName={setName} name={name} />
         </div>
 
-        <div className={styles.subtitle}>
-          <Typography variant="subtitle1">
-            Select your Card
-          </Typography>
+        <div className={styles.cardsContainer}>
+          {players.map((player) => getPlayer(player))}
         </div>
 
-        <div
-          className={classnames(styles.btnContainer, {
-            [styles.btnsDisabled]: showValue,
-          })}
-        >
-          {cards.map((cardName) => (
-            <div
-              key={cardName}
-              className={classnames(styles.card, {
-                [styles.selectedCard]: getMe()?.card === cardName,
-              })}
-              onClick={() => handleSelected(cardName)}
-            >
-              <Card cardName={cardName} />
-            </div>
-          ))}
+        <div className={styles.selectionContainer}>
+          <Button
+            variant="contained"
+            color="primary"
+            onClick={handleShowValue}
+            disabled={!getSomeoneHasCard() && !showValue}
+          >
+            {showValue ? 'Reset' : 'Show'} cards
+          </Button>
+
+          <div className={styles.subtitle}>
+            <Average
+              cardValues={getCardValues(players)}
+              showValue={showValue}
+            />
+          </div>
+
+          <div className={styles.subtitle}>
+            <Typography variant="subtitle1">
+              Select your Card
+            </Typography>
+          </div>
+
+          <div
+            className={classnames(styles.btnContainer, {
+              [styles.btnsDisabled]: showValue,
+            })}
+          >
+            {cards.map((cardName) => (
+              <div
+                key={cardName}
+                className={classnames(styles.card, {
+                  [styles.selectedCard]: getMe()?.card === cardName,
+                })}
+                onClick={() => handleSelected(cardName)}
+              >
+                <Card cardName={cardName} />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
