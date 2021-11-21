@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react';
 
-import ReactConfetti from "react-confetti";
+import ReactConfetti from 'react-confetti';
 
 const Confetti = ({ cards }) => {
   if (cards.length > 1) {

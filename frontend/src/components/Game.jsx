@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from "react";
-import { useParams, useHistory } from "react-router-dom";
-import classnames from "classnames";
+import React, { useEffect, useState } from 'react';
+import { useParams, useHistory } from 'react-router-dom';
+import classnames from 'classnames';
 
-import Confetti from "./Confetti";
+import Confetti from './Confetti';
 
-import { Typography, Button } from "@material-ui/core";
+import { Typography, Button } from '@material-ui/core';
 
-import { cards } from "../imgs/cards";
+import { cards } from '../imgs/cards';
 
-import openHack from "../imgs/open_hack_2019-03.svg";
+import openHack from '../imgs/open_hack_2019-03.svg';
 
 import {
   initiateSocket,
@@ -17,12 +17,12 @@ import {
   showCards,
   resetCards,
   subscribeToStateUpdate,
-} from "../utils/socketIo";
+} from '../utils/socketIo';
 
-import Card from "./Card";
-import Settings from "./Settings";
+import Card from './Card';
+import Settings from './Settings';
 
-import styles from "./Game.module.css";
+import styles from './Game.module.css';
 
 const getCards = (players) => {
   if (!players) {
@@ -39,7 +39,9 @@ const getCardValues = (players) => {
   const numOr0 = (n) => (isNaN(n) || !n ? Infinity : n);
 
   // return list of all defined cards
-  return players.filter(({ card }) => !!card).map(({ card }) => numOr0(card));
+  return players
+    .filter(({ card }) => !!card)
+    .map(({ card }) => numOr0(card));
 };
 
 const getAverage = (players) => {
@@ -64,7 +66,9 @@ const Game = () => {
 
   const [players, setPlayers] = useState([]);
 
-  const [name, setName] = useState(window.localStorage.getItem("name") || null);
+  const [name, setName] = useState(
+    window.localStorage.getItem('name') || null,
+  );
 
   const handleShowValue = () => {
     if (showValue) {
@@ -94,7 +98,11 @@ const Game = () => {
     if (value) {
       return (
         <>
-          {showValue ? <Card cardName={value} /> : <Card cardName={"cover"} />}
+          {showValue ? (
+            <Card cardName={value} />
+          ) : (
+            <Card cardName={'cover'} />
+          )}
         </>
       );
     }
@@ -110,23 +118,32 @@ const Game = () => {
           [styles.playerMe]: getMe()?.userId === player.userId,
         })}
       >
-        <Typography variant='subtitle1'>{player.name}</Typography>
+        <Typography variant="subtitle1">{player.name}</Typography>
       </div>
     </div>
   );
 
-  const getSomeoneHasCard = () => players?.find((player) => !!player.card);
-  const getMe = () => players?.find((player) => player.userId === userId);
+  const getSomeoneHasCard = () =>
+    players?.find((player) => !!player.card);
+  const getMe = () =>
+    players?.find((player) => player.userId === userId);
 
   return (
     <div className={styles.gameContainer}>
       <div className={styles.header}>
-        <div className={styles.headerLogo} onClick={() => history.push("/")}>
-          <img className={styles.logo} src={openHack} alt='Open Hack Logo' />
+        <div
+          className={styles.headerLogo}
+          onClick={() => history.push('/')}
+        >
+          <img
+            className={styles.logo}
+            src={openHack}
+            alt="Open Hack Logo"
+          />
           <div>📅</div>
           <div>🃏</div>
         </div>
-        <Typography variant='h5'>{gameId}</Typography>
+        <Typography variant="h5">{gameId}</Typography>
         <Settings setName={setName} name={name} />
       </div>
 
@@ -137,23 +154,25 @@ const Game = () => {
 
       <div className={styles.selectionContainer}>
         <Button
-          variant='contained'
-          color='primary'
+          variant="contained"
+          color="primary"
           onClick={handleShowValue}
           disabled={!getSomeoneHasCard() && !showValue}
         >
-          {showValue ? "Reset" : "Show"} cards
+          {showValue ? 'Reset' : 'Show'} cards
         </Button>
 
         <div className={styles.subtitle}>
-          <Typography variant='subtitle2'>
-            {"Average: "}
+          <Typography variant="subtitle2">
+            {'Average: '}
             {showValue && getAverage(players)}
           </Typography>
         </div>
 
         <div className={styles.subtitle}>
-          <Typography variant='subtitle1'>Select your Card</Typography>
+          <Typography variant="subtitle1">
+            Select your Card
+          </Typography>
         </div>
 
         <div
