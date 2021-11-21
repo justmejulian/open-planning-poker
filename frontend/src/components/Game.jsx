@@ -2,8 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
 import classnames from 'classnames';
 
-import Confetti from './Confetti';
-
 import { Typography, Button } from '@material-ui/core';
 
 import { cards } from '../imgs/cards';
@@ -21,6 +19,8 @@ import {
 
 import Card from './Card';
 import Settings from './Settings';
+import Confetti from './Confetti';
+import Average from './Average';
 
 import styles from './Game.module.css';
 
@@ -42,18 +42,6 @@ const getCardValues = (players) => {
   return players
     .filter(({ card }) => !!card)
     .map(({ card }) => numOr0(card));
-};
-
-const getAverage = (players) => {
-  if (!players) {
-    return null;
-  }
-
-  const allCards = getCardValues(players);
-
-  const sum = allCards.reduce((a, b) => a + b, 0);
-
-  return sum ? sum / allCards.length : 0;
 };
 
 const Game = () => {
@@ -163,10 +151,10 @@ const Game = () => {
         </Button>
 
         <div className={styles.subtitle}>
-          <Typography variant="subtitle2">
-            {'Average: '}
-            {showValue && getAverage(players)}
-          </Typography>
+          <Average
+            cardValues={getCardValues(players)}
+            showValue={showValue}
+          />
         </div>
 
         <div className={styles.subtitle}>
