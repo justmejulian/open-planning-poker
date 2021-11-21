@@ -27,7 +27,7 @@ $ npm run dev
 ### Backend
 With hot reload.
 ```sh
-$ cd backend
+$ cd server
 $ npm run dev
 ```
 
@@ -35,6 +35,8 @@ $ npm run dev
 $ cd frontend
 $ npm run start
 ```
+
+Visit: http://localhost:3000
 
 ## Credits
 
