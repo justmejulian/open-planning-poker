@@ -2,7 +2,12 @@ import React from 'react';
 
 import styles from './Settings.module.css';
 
-import { Modal, IconButton, TextField, Button } from '@material-ui/core/';
+import {
+  Modal,
+  IconButton,
+  TextField,
+  Button,
+} from '@material-ui/core/';
 import SettingsIcon from '@material-ui/icons/Settings';
 
 const Settings = ({ setName, name }) => {
