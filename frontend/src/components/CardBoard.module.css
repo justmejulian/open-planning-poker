@@ -1,0 +1,31 @@
+.cardsContainer {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  flex-wrap: wrap;
+
+  box-sizing: border-box;
+
+  width: 100%;
+  max-width: 500px;
+  height: 300px;
+  margin: auto;
+}
+
+.cardContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  margin-right: 12px;
+
+  width: 80px;
+}
+
+.playerName {
+  margin-top: 8px;
+}
+
+.playerMe {
+  border-bottom: 1px solid blue;
+}

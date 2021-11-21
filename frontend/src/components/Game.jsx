@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { useParams, useHistory } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import classnames from 'classnames';
 
 import { Typography, Button } from '@material-ui/core';
 
 import { cards } from '../imgs/cards';
-
-import openHack from '../imgs/open_hack_2019-03.svg';
 
 import {
   initiateSocket,
@@ -18,12 +16,13 @@ import {
 } from '../utils/socketIo';
 
 import Card from './Card';
+import CardBoard from './CardBoard';
 import Settings from './Settings';
 import Confetti from './Confetti';
 import Average from './Average';
+import HeaderLogo from './HeaderLogo';
 
 import styles from './Game.module.css';
-import { HeaderLogo } from './HeaderLogo';
 
 const getCards = (players) => {
   if (!players) {
@@ -47,7 +46,6 @@ const getCardValues = (players) => {
 
 const Game = () => {
   const { gameId } = useParams();
-  const history = useHistory();
 
   const [userId, setUserId] = useState(null);
 
@@ -83,35 +81,6 @@ const Game = () => {
     }
   }, [name, gameId]);
 
-  const getCard = (value) => {
-    if (value) {
-      return (
-        <>
-          {showValue ? (
-            <Card cardName={value} />
-          ) : (
-            <Card cardName={'cover'} />
-          )}
-        </>
-      );
-    }
-
-    return <Card />;
-  };
-
-  const getPlayer = (player) => (
-    <div className={styles.cardContainer} key={player.userId}>
-      {getCard(player.card)}
-      <div
-        className={classnames(styles.playerName, {
-          [styles.playerMe]: getMe()?.userId === player.userId,
-        })}
-      >
-        <Typography variant="subtitle1">{player.name}</Typography>
-      </div>
-    </div>
-  );
-
   const getSomeoneHasCard = () =>
     players?.find((player) => !!player.card);
   const getMe = () =>
@@ -122,14 +91,16 @@ const Game = () => {
       {showValue && <Confetti cards={getCards(players)} />}
       <div className={styles.gameContainer}>
         <div className={styles.header}>
-          <HeaderLogo openHack={openHack} />
+          <HeaderLogo />
           <Typography variant="h5">{gameId}</Typography>
           <Settings setName={setName} name={name} />
         </div>
 
-        <div className={styles.cardsContainer}>
-          {players.map((player) => getPlayer(player))}
-        </div>
+        <CardBoard
+          players={players}
+          me={getMe()}
+          showValue={showValue}
+        />
 
         <div className={styles.selectionContainer}>
           <Button
