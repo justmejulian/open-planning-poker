@@ -1,10 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import classnames from 'classnames';
 
 import { Typography, Button } from '@material-ui/core';
-
-import { cards } from '../imgs/cards';
 
 import {
   initiateSocket,
@@ -15,8 +12,8 @@ import {
   subscribeToStateUpdate,
 } from '../utils/socketIo';
 
-import Card from './Card';
 import CardBoard from './CardBoard';
+import CardSelector from './CardSelector';
 import Settings from './Settings';
 import Confetti from './Confetti';
 import Average from './Average';
@@ -63,10 +60,6 @@ const Game = () => {
     } else {
       showCards();
     }
-  };
-
-  const handleSelected = (cardName) => {
-    setCard(cardName);
   };
 
   useEffect(() => {
@@ -125,23 +118,11 @@ const Game = () => {
             </Typography>
           </div>
 
-          <div
-            className={classnames(styles.btnContainer, {
-              [styles.btnsDisabled]: showValue,
-            })}
-          >
-            {cards.map((cardName) => (
-              <div
-                key={cardName}
-                className={classnames(styles.card, {
-                  [styles.selectedCard]: getMe()?.card === cardName,
-                })}
-                onClick={() => handleSelected(cardName)}
-              >
-                <Card cardName={cardName} />
-              </div>
-            ))}
-          </div>
+          <CardSelector
+            me={getMe()}
+            setCard={setCard}
+            showValue={showValue}
+          />
         </div>
       </div>
     </>

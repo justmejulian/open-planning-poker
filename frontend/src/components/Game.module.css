@@ -28,27 +28,3 @@
 .subtitle {
   margin-top: 32px;
 }
-
-.btnContainer {
-  display: flex;
-  padding: 16px;
-  justify-content: space-evenly;
-  flex-wrap: wrap;
-}
-
-.btnsDisabled {
-  pointer-events: none;
-  opacity: 0.3;
-}
-
-.card {
-  width: 50px;
-  padding: 4px;
-
-  cursor: pointer;
-}
-
-.selectedCard {
-  width: 60px;
-  padding: 4px;
-}
