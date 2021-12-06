@@ -1,4 +1,6 @@
 import cover from './cover.png';
+import zero from './0.png';
+import half from './half.png';
 import one from './1.png';
 import two from './2.png';
 import three from './3.png';
@@ -15,6 +17,8 @@ import shaving from './shaving.png';
 
 export const image = {
   cover: cover,
+  zero: zero,
+  0.5: half,
   1: one,
   2: two,
   3: three,
@@ -31,6 +35,8 @@ export const image = {
 };
 
 export const cards = [
+  `zero`,
+  0.5,
   1,
   2,
   3,
