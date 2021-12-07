@@ -28,3 +28,13 @@
 .subtitle {
   margin-top: 32px;
 }
+
+.settingsWrapper {
+  display: flex;
+  align-items: center;
+}
+
+.githubLogo {
+  height: 20px;
+  width: 20px;
+}

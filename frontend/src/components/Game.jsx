@@ -9,7 +9,7 @@ import {
   setCard,
   showCards,
   resetCards,
-  subscribeToStateUpdate,
+  subscribeToStateUpdate
 } from '../utils/socketIo';
 
 import CardBoard from './CardBoard';
@@ -18,6 +18,8 @@ import Settings from './Settings';
 import Confetti from './Confetti';
 import Average from './Average';
 import HeaderLogo from './HeaderLogo';
+
+import githubLogo from '../imgs/GitHub-Mark-120px-plus.png';
 
 import styles from './Game.module.css';
 
@@ -36,9 +38,7 @@ const getCardValues = (players) => {
   const numOr0 = (n) => (isNaN(n) || !n ? Infinity : n);
 
   // return list of all defined cards
-  return players
-    .filter(({ card }) => !!card)
-    .map(({ card }) => numOr0(card));
+  return players.filter(({ card }) => !!card).map(({ card }) => numOr0(card));
 };
 
 const Game = () => {
@@ -50,9 +50,7 @@ const Game = () => {
 
   const [players, setPlayers] = useState([]);
 
-  const [name, setName] = useState(
-    window.localStorage.getItem('name') || null,
-  );
+  const [name, setName] = useState(window.localStorage.getItem('name') || null);
 
   const handleShowValue = () => {
     if (showValue) {
@@ -74,10 +72,8 @@ const Game = () => {
     }
   }, [name, gameId]);
 
-  const getSomeoneHasCard = () =>
-    players?.find((player) => !!player.card);
-  const getMe = () =>
-    players?.find((player) => player.userId === userId);
+  const getSomeoneHasCard = () => players?.find((player) => !!player.card);
+  const getMe = () => players?.find((player) => player.userId === userId);
 
   return (
     <>
@@ -86,43 +82,39 @@ const Game = () => {
         <div className={styles.header}>
           <HeaderLogo />
           <Typography variant="h5">{gameId}</Typography>
-          <Settings setName={setName} name={name} />
+          <div className={styles.settingsWrapper}>
+            <Settings setName={setName} name={name} />
+            <a href="https://github.com/justmejulian/open-planning-poker">
+              <img
+                className={styles.githubLogo}
+                src={githubLogo}
+                alt="Github Logo"
+                title="justmejulian/open-planning-poker"
+              />
+            </a>
+          </div>
         </div>
 
-        <CardBoard
-          players={players}
-          me={getMe()}
-          showValue={showValue}
-        />
+        <CardBoard players={players} me={getMe()} showValue={showValue} />
 
         <div className={styles.selectionContainer}>
           <Button
             variant="contained"
             color="primary"
             onClick={handleShowValue}
-            disabled={!getSomeoneHasCard() && !showValue}
-          >
+            disabled={!getSomeoneHasCard() && !showValue}>
             {showValue ? 'Reset' : 'Show'} cards
           </Button>
 
           <div className={styles.subtitle}>
-            <Average
-              cardValues={getCardValues(players)}
-              showValue={showValue}
-            />
+            <Average cardValues={getCardValues(players)} showValue={showValue} />
           </div>
 
           <div className={styles.subtitle}>
-            <Typography variant="subtitle1">
-              Select your Card
-            </Typography>
+            <Typography variant="subtitle1">Select your Card</Typography>
           </div>
 
-          <CardSelector
-            me={getMe()}
-            setCard={setCard}
-            showValue={showValue}
-          />
+          <CardSelector me={getMe()} setCard={setCard} showValue={showValue} />
         </div>
       </div>
     </>
