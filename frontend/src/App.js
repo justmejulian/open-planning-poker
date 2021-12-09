@@ -1,6 +1,10 @@
 import React from 'react';
 
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from 'react-router-dom';
 
 import { hot } from 'react-hot-loader/root';
 
@@ -9,7 +13,6 @@ import Game from './components/Game';
 
 class App extends React.Component {
   render() {
-    const { name } = this.props;
     return (
       <Router>
         <Switch>

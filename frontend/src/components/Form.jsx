@@ -1,6 +1,11 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
-import { Button, TextField, Card, Typography } from '@material-ui/core';
+import {
+  Button,
+  TextField,
+  Card,
+  Typography,
+} from '@material-ui/core';
 
 import openHack from '../imgs/open_hack_2019-03.svg';
 
@@ -24,7 +29,11 @@ const Form = () => {
   return (
     <Card className={styles.formContainer}>
       <div className={styles.titleLogo}>
-        <img className={styles.logo} src={openHack} alt="Open Hack Logo" />
+        <img
+          className={styles.logo}
+          src={openHack}
+          alt="Open Hack Logo"
+        />
         📅🃏
       </div>
       <Typography variant="subtitle1">Open Planning Poker</Typography>
