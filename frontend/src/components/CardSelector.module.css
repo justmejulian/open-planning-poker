@@ -17,7 +17,18 @@
   cursor: pointer;
 }
 
+.mobileCard {
+  width: 20px;
+  padding-right: 5px;
+}
+
 .selectedCard {
   width: 60px;
   padding: 4px;
+}
+
+.mobileMenuItem {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
 }
