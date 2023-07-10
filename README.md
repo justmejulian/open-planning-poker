@@ -43,7 +43,7 @@ Visit: http://localhost:3000
 ### Get the Docker image
 You can use the public image
 ```sh
-$ docker pull ghcr.io/d-portenier/open-planning-poker:latest
+$ docker pull ghcr.io/justmejulian/open-planning-poker:latest
 ```
 or build it yourself locally
 ```sh
@@ -54,7 +54,7 @@ $ docker build -t <container-name> .
 ```sh
 $ docker run -p 3000:3000 -d <container-name>
 ```
-Use the same name as <container-name> you have used when building the image. If you have pulled the image from the registry, use ghcr.io/d-portenier/open-planning-poker as \<container-name\>.
+Use the same name as <container-name> you have used when building the image. If you have pulled the image from the registry, use ghcr.io/justmejulian/open-planning-poker as \<container-name\>.
 
 Visit: http://localhost:3000
 
