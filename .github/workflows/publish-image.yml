@@ -31,7 +31,6 @@ jobs:
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
 
-      - name: Build and push Docker images
-        run: echo "Tag is ${{ steps.mega.outputs.tags }}"
+      - name: echo "Tag is ${{ steps.meta.outputs.tags }}"
         
       - run: echo "Labels is ${{ steps.meta.outputs.labels }}"
