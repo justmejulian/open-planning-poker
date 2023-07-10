@@ -50,11 +50,13 @@ or build it yoursefl
 $ docker build -t <container-name> .
 ```
 
-Then run the container
+### Run the container
 ```sh
 $ docker run -p 3000:3000 -d <container-name>
 ```
-Use whatever name as <container-name> you have used when building the image. If you have pulled the image from the registry, use ghcr.io/d-portenier/open-planning-poker as <container-name>
+Use whatever name as <container-name> you have used when building the image. If you have pulled the image from the registry, use ghcr.io/d-portenier/open-planning-poker as \<container-name\>.
+
+Visit: http://localhost:3000
 
 ## Credits
 
