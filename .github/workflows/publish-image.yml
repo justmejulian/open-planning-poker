@@ -31,6 +31,6 @@ jobs:
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
 
-      - name: echo "Tag is ${{ steps.meta.outputs.tags }}"
+      - run: echo "Tag is ${{ steps.meta.outputs.tags }}"
         
       - run: echo "Labels is ${{ steps.meta.outputs.labels }}"
